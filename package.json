@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "test": "mocha test"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "co": "^4.6.0",
+    "co-fs": "^1.2.0",
+    "mocha": "^5.0.0"
+  },
+  "dependencies": {
+    "jsfilter": "https://github.com/saary/jsfilter.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saary/confbits.git"
+  },
+  "name": "confbits",
+  "version": "0.3.0",
+  "description": "Get merged configuration from configuration bits by criteria",
+  "main": "index.js",
+  "author": "saary",
+  "license": "MIT"
+}

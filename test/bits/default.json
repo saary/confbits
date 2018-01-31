@@ -1,0 +1,10 @@
+{
+  "data": {
+    "common": {
+      "field": "common"
+    },
+    "namespace1": {
+      "field1": "default"
+    }
+  }
+}

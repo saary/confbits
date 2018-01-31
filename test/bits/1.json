@@ -1,0 +1,14 @@
+{
+  "criteria": {
+    "tags": ["a", "b"]
+  },
+  "data": {
+    "namespace1": {
+      "field1": "1"
+    },
+    "namespace3": {
+      "field1": "1"
+    }
+  },
+  "priority": 1
+}
