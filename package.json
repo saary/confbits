@@ -16,7 +16,7 @@
     "url": "https://github.com/saary/confbits.git"
   },
   "name": "confbits",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Get merged configuration from configuration bits by criteria",
   "main": "index.js",
   "author": "saary",
