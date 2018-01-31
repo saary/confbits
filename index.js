@@ -4,20 +4,20 @@ const { JsonFilter } = require('jsfilter');
 const mergeBits = ({ subject, bits }) => (
   bits
     .filter((bit) => {
-      // only bits which criteria matches the subject should remain
-      if (bit.criteria) {
-        try {        
-          return JsonFilter
-            .create(bit.criteria)
-            .match(subject);
-        }
-        catch (error) {
-          console.log('Failed criteria', bit.criteria, error);
-          return false;
-        }
+      if (!bit.criteria) {
+        return true;
       }
 
-      return true;
+      // only bits which criteria matches the subject should remain
+      try {        
+        return JsonFilter
+          .create(bit.criteria)
+          .match(subject);
+      }
+      catch (error) {
+        console.log('Failed criteria', bit.criteria, error);
+        return false;
+      }
     })
     .sort((a,b) => (a.priority || 0) - (b.priority || 0))
     .reduce((res, bit) => Object.assign(res, bit.data), {})
