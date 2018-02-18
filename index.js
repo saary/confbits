@@ -1,7 +1,7 @@
 const path = require('path');
 const { JsonFilter } = require('jsfilter');
 
-const mergeBits = ({ subject, bits }) => (
+const filterBits = ({ subject, bits }) => (
   bits
     .filter((bit) => {
       if (!bit.criteria) {
@@ -19,8 +19,17 @@ const mergeBits = ({ subject, bits }) => (
         return false;
       }
     })
+);
+
+const mergeBits = ({ subject, bits }) => (
+  filterBits({ subject, bits })
     .sort((a,b) => (a.priority || 0) - (b.priority || 0))
     .reduce((res, bit) => Object.assign(res, bit.data), {})
+);
+
+const all = ({ subject, bits }) => (
+  filterBits({ subject, bits })
+    .map(bit => bit.data)
 );
 
 module.exports = ({ bits = [] }) => {
@@ -32,6 +41,10 @@ module.exports = ({ bits = [] }) => {
     get(subject) {
       const { bits } = this;
       return mergeBits({ subject, bits });
+    },
+    all(subject) {
+      const { bits } = this;
+      return all({ subject, bits });
     }
   };
 };
