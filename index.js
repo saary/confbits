@@ -19,11 +19,11 @@ const filterBits = ({ subject, bits }) => (
         return false;
       }
     })
+    .sort((a,b) => (a.priority || 0) - (b.priority || 0))
 );
 
 const mergeBits = ({ subject, bits }) => (
   filterBits({ subject, bits })
-    .sort((a,b) => (a.priority || 0) - (b.priority || 0))
     .reduce((res, bit) => Object.assign(res, bit.data), {})
 );
 

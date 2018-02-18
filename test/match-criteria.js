@@ -66,4 +66,16 @@ describe('Match subject against criteria', function() {
     expect(res.namespace3).to.exist;
     expect(res.namespace3.field1).to.eq('2');
   });
-})
+
+  it('Should get all bits matching criteria 1 and 2', function() {
+    const subject = { tags: ['a', 'b'], country: 'DE' };
+    const res = conf.all(subject);
+    expect(res).to.exist;
+    expect(res.length).to.eq(3);
+    expect(res[0].namespace3).to.not.exist;
+    expect(res[1].namespace3).to.exist;
+    expect(res[1].namespace3.field1).to.eq('1');
+    expect(res[2].namespace3).to.exist;
+    expect(res[2].namespace3.field1).to.eq('2');
+  });
+});
